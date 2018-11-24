@@ -5,3 +5,14 @@ cd CarND-MPC-Project-master
 mkdir build && cd build
 cmake .. && make
 ./pid
+
+
+
+cp -R path_to_source path_to_destination/
+
+cp -R mnt/d/Installation/Ipopt-3.12.8 home/magic/cpp_tools/
+
+
+sudo bash install_ipopt.sh /home/magic/cpp_tools/
+
+bash install_ipopt.sh /home/magic/cpp_tools/
