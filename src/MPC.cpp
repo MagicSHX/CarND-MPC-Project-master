@@ -20,7 +20,7 @@ const double Lf = 2.67;
 //const size_t N = 25;
 //const double dt = 0.05;
 //const int latency_ind = 2;
-double ref_v = 100;
+double ref_v = 81;
 
 double a_error_weight = 10;
 double delta_error_weight=600;
@@ -181,8 +181,10 @@ Solution MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
   }
 
   for (int i = delta_start; i < delta_start + latency_ind; i++) {
-    vars_lowerbound[i] = delta_prev;
-    vars_upperbound[i] = delta_prev;
+    //vars_lowerbound[i] = delta_prev;
+	vars_lowerbound[i] = -0.436332;
+    //vars_upperbound[i] = delta_prev;
+	vars_upperbound[i] = 0.436332;
   }
 
   for (int i = a_start; i < n_vars; i++) {

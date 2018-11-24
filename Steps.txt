@@ -5,6 +5,10 @@ cd CarND-MPC-Project-master
 mkdir build && cd build
 cmake .. && make
 ./pid
+./mpc
+y
+
+
 
 
 
