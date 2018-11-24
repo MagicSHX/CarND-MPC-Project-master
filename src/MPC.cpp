@@ -143,7 +143,6 @@ MPC::~MPC() {}
 
 //vector<double> MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
 Solution MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
-  unsigned size_t i;
   typedef CPPAD_TESTVECTOR(double) Dvector;
 
   double x = x0[0];
@@ -154,7 +153,7 @@ Solution MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
   double epsi = x0[5];
   size_t n_vars = N * 6 + (N - 1) * 2;
   size_t n_constraints = N * 6;
-
+  size_t i;
   // Initial value of the independent variables.
   // Should be 0 except for the initial values.
   Dvector vars(n_vars);
