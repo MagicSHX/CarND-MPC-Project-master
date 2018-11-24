@@ -17,9 +17,9 @@ using CppAD::AD;
 // This is the length from front to CoG that has a similar radius.
 const double Lf = 2.67;
 //const size_t N = 12;
-const size_t N = 25;
-const double dt = 0.05;
-const int latency_ind = 2;
+//const size_t N = 25;
+//const double dt = 0.05;
+//const int latency_ind = 2;
 double ref_v = 100;
 
 double a_error_weight = 10;
