@@ -20,10 +20,10 @@ const double Lf = 2.67;
 //const size_t N = 25;
 //const double dt = 0.05;
 //const int latency_ind = 2;
-double ref_v = 85;
+double ref_v = 100;
 
 double a_error_weight = 10;
-double delta_error_weight=600;
+double delta_error_weight=500;
 
 size_t x_start = 0;
 size_t y_start = x_start + N;
