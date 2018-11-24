@@ -20,7 +20,7 @@ const double Lf = 2.67;
 //const size_t N = 25;
 //const double dt = 0.05;
 //const int latency_ind = 2;
-double ref_v = 81;
+double ref_v = 85;
 
 double a_error_weight = 10;
 double delta_error_weight=600;
@@ -176,15 +176,15 @@ Solution MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
   }
 
   for (int i = delta_start; i < a_start; i++) {
-    vars_lowerbound[i] = -25/180*M_PI;
-    vars_upperbound[i] = 25/180*M_PI;
+    //vars_lowerbound[i] = -25/180*M_PI;
+    //vars_upperbound[i] = 25/180*M_PI;
+	vars_lowerbound[i] = -0.436332;
+	vars_upperbound[i] = 0.436332;
   }
 
   for (int i = delta_start; i < delta_start + latency_ind; i++) {
-    //vars_lowerbound[i] = delta_prev;
-	vars_lowerbound[i] = -0.436332;
-    //vars_upperbound[i] = delta_prev;
-	vars_upperbound[i] = 0.436332;
+    vars_lowerbound[i] = delta_prev;
+    vars_upperbound[i] = delta_prev;
   }
 
   for (int i = a_start; i < n_vars; i++) {
@@ -243,12 +243,12 @@ Solution MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
   //cout << "ok " << ok << endl;
 
   Solution sol;
-  for (auto t = 0; t < N-1 ; t++){
-  	cout << t << ": " << "solution.x[x_start+t]: " << solution.x[x_start+t] << "solution.x[y_start+t]: " << solution.x[y_start+t] << endl;
-  	sol.X.push_back(solution.x[x_start+t]);
-  	sol.Y.push_back(solution.x[y_start+t]);
-  	sol.Delta.push_back(solution.x[delta_start+t]);
-  	sol.A.push_back(solution.x[a_start+t]);
+  for (auto i = 0; i < N-1 ; i++){
+  	cout << i << ": " << "solution.x[x_start+i]: " << solution.x[x_start+i] << "solution.x[y_start+i]: " << solution.x[y_start+i] << endl;
+  	sol.X.push_back(solution.x[x_start+i]);
+  	sol.Y.push_back(solution.x[y_start+i]);
+  	sol.Delta.push_back(solution.x[delta_start+i]);
+  	sol.A.push_back(solution.x[a_start+i]);
   }
 
   auto cost = solution.obj_value;
