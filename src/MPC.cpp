@@ -23,16 +23,16 @@ const int latency_ind = 2;
 double ref_v = 100;
 
 double a_error_weight = 10;
-double delta_error_weight=600
+double delta_error_weight=600;
 
-int x_start = 0;
-int y_start = x_start + N;
-int psi_start = y_start + N;
-int v_start = psi_start + N;
-int cte_start = v_start + N;
-int epsi_start = cte_start + N;
-int delta_start = epsi_start + N;
-int a_start = delta_start + N - 1;
+size_t x_start = 0;
+size_t y_start = x_start + N;
+size_t psi_start = y_start + N;
+size_t v_start = psi_start + N;
+size_t cte_start = v_start + N;
+size_t epsi_start = cte_start + N;
+size_t delta_start = epsi_start + N;
+size_t a_start = delta_start + N - 1;
 
 class FG_eval {
  public:
@@ -176,30 +176,30 @@ Solution MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
   }
 
   for (int i = delta_start; i < a_start; i++) {
-    vars_lowerbound[t] = -25/180*M_PI;
-    vars_upperbound[t] = 25/180*M_PI;
+    vars_lowerbound[i] = -25/180*M_PI;
+    vars_upperbound[i] = 25/180*M_PI;
   }
 
-  for (int t = delta_start; t < delta_start + latency_ind; t++) {
-    vars_lowerbound[t] = delta_prev;
-    vars_upperbound[t] = delta_prev;
+  for (int i = delta_start; i < delta_start + latency_ind; i++) {
+    vars_lowerbound[i] = delta_prev;
+    vars_upperbound[i] = delta_prev;
   }
 
-  for (int t = a_start; t < n_vars; t++) {
-    vars_lowerbound[t] = -1.0;
-    vars_upperbound[t] =  1.0;
+  for (int i = a_start; i < n_vars; i++) {
+    vars_lowerbound[i] = -1.0;
+    vars_upperbound[i] =  1.0;
   }
 
-  for (int t = a_start; t < a_start+latency_ind; t++) {
-    vars_lowerbound[t] = a_prev;
-    vars_upperbound[t] = a_prev;
+  for (int i = a_start; i < a_start+latency_ind; i++) {
+    vars_lowerbound[i] = a_prev;
+    vars_upperbound[i] = a_prev;
   }
 
   Dvector constraints_lowerbound(n_constraints);
   Dvector constraints_upperbound(n_constraints);
-  for (int t = 0; t < n_constraints; t++) {
-    constraints_lowerbound[t] = 0;
-    constraints_upperbound[t] = 0;
+  for (int i = 0; i < n_constraints; i++) {
+    constraints_lowerbound[i] = 0;
+    constraints_upperbound[i] = 0;
   }
   constraints_lowerbound[x_start] = x;
   constraints_lowerbound[y_start] = y;
