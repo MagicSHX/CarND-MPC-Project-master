@@ -23,7 +23,7 @@ const double Lf = 2.67;
 double ref_v = 100;
 
 double a_error_weight = 10;
-double delta_error_weight=600;
+double delta_error_weight=800;
 
 size_t x_start = 0;
 size_t y_start = x_start + N;
@@ -35,6 +35,8 @@ size_t delta_start = epsi_start + N;
 size_t a_start = delta_start + N - 1;
 
 class FG_eval {
+
+  size_t t;
  public:
  // Fitted polynomial coefficients
   Eigen::VectorXd coeffs;
