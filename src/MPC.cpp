@@ -36,7 +36,7 @@ size_t a_start = delta_start + N - 1;
 
 class FG_eval {
 
-  size_t t;
+
  public:
  // Fitted polynomial coefficients
   Eigen::VectorXd coeffs;
@@ -143,7 +143,7 @@ MPC::~MPC() {}
 
 //vector<double> MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
 Solution MPC::Solve(Eigen::VectorXd x0, Eigen::VectorXd coeffs) {
-  size_t i;
+  unsigned size_t i;
   typedef CPPAD_TESTVECTOR(double) Dvector;
 
   double x = x0[0];
