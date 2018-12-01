@@ -22,7 +22,7 @@ const double Lf = 2.67;
 //const int latency_ind = 2;
 double ref_v = 120;
 
-double a_error_weight = 20;
+double a_error_weight = 15;
 double delta_error_weight=700;
 
 size_t x_start = 0;
