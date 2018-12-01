@@ -23,7 +23,7 @@ const double Lf = 2.67;
 double ref_v = 100;
 
 double a_error_weight = 14;
-double delta_error_weight=700;
+double delta_error_weight=1200;
 
 size_t x_start = 0;
 size_t y_start = x_start + N;
