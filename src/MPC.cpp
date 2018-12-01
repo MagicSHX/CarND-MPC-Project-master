@@ -20,9 +20,9 @@ const double Lf = 2.67;
 //const size_t N = 25;
 //const double dt = 0.05;
 //const int latency_ind = 2;
-double ref_v = 110;
+double ref_v = 100;
 
-double a_error_weight = 15;
+double a_error_weight = 14;
 double delta_error_weight=700;
 
 size_t x_start = 0;
